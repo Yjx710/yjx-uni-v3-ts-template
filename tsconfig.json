@@ -1,0 +1,35 @@
+{
+  // 定义被继承的配置文件
+  "extends": "@vue/tsconfig/tsconfig.json",
+  // 用来配置编译选项
+  "compilerOptions": {
+    // 启动所有类型检查
+    "strict": true,
+    // 允许编译JS
+    "allowJs": true,
+    // 用来指定编译时是否生成.map文件
+    "sourceMap": true,
+    // 模块解析
+    "baseUrl": ".",
+    // 路径映射
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "lib": ["esnext", "dom"],
+    // types用来指定需要包含的模块，只有在这里列出的模块的声明文件才会被加载进来
+    "types": [
+      "@dcloudio/types", // uni-app API 类型
+      "@uni-helper/uni-ui-types", // 提供 uni-ui 组件类型
+      "@uni-helper/uni-app-types" // 提供 uni-app 组件类型
+    ]
+  },
+  // 校验 uni-app 组件类型
+  "vueCompilerOptions": {
+    // experimentalRuntimeMode 已废弃，现调整为 nativeTags，请升级 Volar 插件至最新版本
+    "nativeTags": ["block", "component", "template", "slot"]
+  },
+  // 指定需要编译文件
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  // 排除的文件或文件夹
+  "exclude": ["node_modules", "dist", "build"]
+}
